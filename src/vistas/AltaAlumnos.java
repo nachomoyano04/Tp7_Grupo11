@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Marcel
+ * @author Marcel y los pibardos
  */
 public class AltaAlumnos extends javax.swing.JInternalFrame {
 
@@ -34,9 +34,9 @@ public class AltaAlumnos extends javax.swing.JInternalFrame {
         lblLegajo = new javax.swing.JLabel();
         lblApellido = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        txtLegajo = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
+        tfLegajo = new javax.swing.JTextField();
+        tfApellido = new javax.swing.JTextField();
+        tfNombre = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
@@ -87,10 +87,10 @@ public class AltaAlumnos extends javax.swing.JInternalFrame {
                             .addComponent(lblNombre))
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtApellido)
-                            .addComponent(txtNombre)
+                            .addComponent(tfApellido)
+                            .addComponent(tfNombre)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(35, Short.MAX_VALUE)
@@ -112,15 +112,15 @@ public class AltaAlumnos extends javax.swing.JInternalFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLegajo)
-                    .addComponent(txtLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblApellido)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
@@ -133,37 +133,37 @@ public class AltaAlumnos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        int legajo = parseInt(txtLegajo.getText());
-        String apellido = txtApellido.getText();
-        String nombre = txtNombre.getText();
+        int legajo = parseInt(tfLegajo.getText());
+        String apellido = tfApellido.getText();
+        String nombre = tfNombre.getText();
         
         if ((!MenuColegio.listaAlumnos.containsKey(legajo))){
             MenuColegio.listaAlumnos.put(legajo, new Alumno(legajo,apellido,nombre));
             JOptionPane.showMessageDialog(this,"Ingreso exitoso");
         }else {
             JOptionPane.showMessageDialog(this,"Ingreso inválido");
-            txtLegajo.requestFocus();
+            tfLegajo.requestFocus();
             limpiar();        
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         limpiar();
-        txtLegajo.requestFocus();
+        tfLegajo.requestFocus();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
     public void limpiar(){
-        txtApellido.setText("");
-        txtLegajo.setText("");
-        txtNombre.setText("");
+        tfApellido.setText("");
+        tfLegajo.setText("");
+        tfNombre.setText("");
     }
 
     @Override
     public String toString() {
-        return txtLegajo.getText();
+        return tfLegajo.getText();
     }
     
 
@@ -175,8 +175,8 @@ public class AltaAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblLegajo;
     private javax.swing.JLabel lblNombre;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtLegajo;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField tfApellido;
+    private javax.swing.JTextField tfLegajo;
+    private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,10 @@
  */
 package vistas;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import javax.swing.JComboBox;
+import tp7.Alumno;
 
 /**
  *
@@ -17,6 +20,7 @@ public class InscripcionEnMaterias extends javax.swing.JInternalFrame {
      */
     public InscripcionEnMaterias() {
         initComponents();
+
     }
 
     /**
@@ -46,10 +50,22 @@ public class InscripcionEnMaterias extends javax.swing.JInternalFrame {
         lblApellido.setText("ELIJA UN ALUMNO");
 
         btnInscribir.setText("Inscribir");
+        btnInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInscribirActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("  Salir  ");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
-        jComboMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mat 1 ", "mat2", "mat 3" }));
+        for (HashMap.Entry cantidad: MenuColegio.listaMaterias.entrySet()) {
+            jComboMaterias.addItem(cantidad.getValue().toString());
+        }
         jComboMaterias.setSelectedItem(getActionMap());
         jComboMaterias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,7 +73,9 @@ public class InscripcionEnMaterias extends javax.swing.JInternalFrame {
             }
         });
 
-        jComboAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        for (HashMap.Entry cantidad: MenuColegio.listaAlumnos.entrySet()) {
+            jComboAlumno.addItem(cantidad.getValue().toString());
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,13 +91,14 @@ public class InscripcionEnMaterias extends javax.swing.JInternalFrame {
                     .addComponent(lblApellido))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(btnInscribir)
                         .addGap(18, 18, 18)
                         .addComponent(btnSalir))
-                    .addComponent(jComboAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jComboAlumno, javax.swing.GroupLayout.Alignment.LEADING, 0, 124, Short.MAX_VALUE)
+                        .addComponent(jComboMaterias, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(68, 68, 68))
         );
         layout.setVerticalGroup(
@@ -113,6 +132,17 @@ combo.addItem( (String) it.next());*/
 
     }//GEN-LAST:event_jComboMateriasActionPerformed
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirActionPerformed
+        // TODO add your handling code here:
+        //if(Alumno.materias.containsKey(jComboMaterias.getTex));
+    }//GEN-LAST:event_btnInscribirActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInscribir;

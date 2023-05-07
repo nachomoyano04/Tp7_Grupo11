@@ -30,10 +30,10 @@
                       </Group>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtApellido" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfApellido" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfNombre" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="txtLegajo" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="tfLegajo" min="-2" pref="53" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -64,17 +64,17 @@
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblLegajo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtLegajo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfLegajo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblApellido" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtApellido" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfApellido" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfNombre" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -113,11 +113,11 @@
         <Property name="text" type="java.lang.String" value="NOMBRE"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtLegajo">
+    <Component class="javax.swing.JTextField" name="tfLegajo">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtApellido">
+    <Component class="javax.swing.JTextField" name="tfApellido">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtNombre">
+    <Component class="javax.swing.JTextField" name="tfNombre">
     </Component>
     <Component class="javax.swing.JButton" name="btnGuardar">
       <Properties>

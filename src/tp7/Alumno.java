@@ -1,12 +1,18 @@
 package tp7;
 
+import java.util.HashMap;
+
 public class Alumno {
 
     private int legajo;
     private String apellido;
     private String nombre;
+    public static HashMap<Integer,Integer> materias = new HashMap();
 
     public Alumno(int legajo, String apellido, String nombre) {
+        this.legajo = legajo;
+        this.apellido = apellido;
+        this.nombre = nombre;
     }
 
     public int getLegajo() {
@@ -34,14 +40,22 @@ public class Alumno {
     }
 
 
-    public Materia agregarMateria(Materia m) {
-        
-        //inscribe al alumno en alguna materia
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void agregarMateria(Materia m) {
+        materias.put(m.getIdMateria(), legajo);
     }
 
     public int cantidadMaterias() {
         //devuelve cant de mateia a las que está inscripto
-        throw new UnsupportedOperationException("Not supported yet.");
+        int cant=0;
+        for (HashMap.Entry cantidad: materias.entrySet()) {
+            cant++;
+        }
+        return cant;
     }
+
+    @Override
+    public String toString() {
+        return  nombre ;
+    }
+    
 }

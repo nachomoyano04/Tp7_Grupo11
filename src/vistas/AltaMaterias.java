@@ -1,7 +1,3 @@
-/*
- * 
- * 
- */
 package vistas;
 
 import tp7.Materia;
