@@ -55,7 +55,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return  nombre ;
+        return  apellido+", "+nombre ;
     }
     
 }

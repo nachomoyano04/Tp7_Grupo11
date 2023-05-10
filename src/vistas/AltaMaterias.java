@@ -90,9 +90,11 @@ public class AltaMaterias extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3))
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNomMateria)
-                            .addComponent(txtAnioPertenece)))
+                            .addComponent(txtAnioPertenece)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtCodMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(35, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -138,22 +140,25 @@ public class AltaMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCodMateriaActionPerformed
 
     private void btnGuardarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarMateriaActionPerformed
-        int idMateria = parseInt(txtCodMateria.getText());
-        String nomMat = txtNomMateria.getText();
-        int anioPertenece = parseInt(txtAnioPertenece.getText());
-        Materia matAux= new Materia(idMateria,nomMat,anioPertenece);
+        try{
+            int idMateria = parseInt(txtCodMateria.getText());
+            String nomMat = txtNomMateria.getText();
+            int anioPertenece = parseInt(txtAnioPertenece.getText());
+            Materia matAux= new Materia(idMateria,nomMat,anioPertenece);
 
-        if (!listaMaterias.containsKey(idMateria)){
-            listaMaterias.put(idMateria,matAux);
-            JOptionPane.showMessageDialog(this,"Ingreso exitoso");
+            if (!listaMaterias.containsKey(idMateria)){
+                listaMaterias.put(idMateria,matAux);
+                JOptionPane.showMessageDialog(this,"Ingreso exitoso");
 
-        }
-        else {
+            }
+            else {
+                JOptionPane.showMessageDialog(this,"Error al cargar la materia");
+                txtCodMateria.requestFocus();
+                limpiar();
+            }
+        }catch(Exception ex){
             JOptionPane.showMessageDialog(this,"Error al cargar la materia");
-            txtCodMateria.requestFocus();
-            limpiar();
         }
-        
 
     }//GEN-LAST:event_btnGuardarMateriaActionPerformed
 

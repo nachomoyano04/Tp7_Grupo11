@@ -90,7 +90,7 @@ public class AltaAlumnos extends javax.swing.JInternalFrame {
                             .addComponent(tfApellido)
                             .addComponent(tfNombre)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(35, Short.MAX_VALUE)
@@ -133,18 +133,22 @@ public class AltaAlumnos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        int legajo = parseInt(tfLegajo.getText());
-        String apellido = tfApellido.getText();
-        String nombre = tfNombre.getText();
-        
-        if ((!MenuColegio.listaAlumnos.containsKey(legajo))){
-            MenuColegio.listaAlumnos.put(legajo, new Alumno(legajo,apellido,nombre));
-            JOptionPane.showMessageDialog(this,"Ingreso exitoso");
-        }else {
-            JOptionPane.showMessageDialog(this,"Ingreso inválido");
-            tfLegajo.requestFocus();
-            limpiar();        
-        }
+        try{
+            int legajo = parseInt(tfLegajo.getText());
+            String apellido = tfApellido.getText();
+            String nombre = tfNombre.getText();
+
+            if ((!MenuColegio.listaAlumnos.containsKey(legajo))){
+                MenuColegio.listaAlumnos.put(legajo, new Alumno(legajo,apellido,nombre));
+                JOptionPane.showMessageDialog(this,"Ingreso exitoso");
+            }else {
+                JOptionPane.showMessageDialog(this,"Ingreso inválido");
+                tfLegajo.requestFocus();
+                limpiar();        
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this,"Acción inválido");
+        }    
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed

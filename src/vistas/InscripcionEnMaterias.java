@@ -4,10 +4,15 @@
  */
 package vistas;
 
+import java.awt.Color;
+import java.awt.Menu;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import tp7.Alumno;
+import tp7.Materia;
 
 /**
  *
@@ -20,7 +25,6 @@ public class InscripcionEnMaterias extends javax.swing.JInternalFrame {
      */
     public InscripcionEnMaterias() {
         initComponents();
-
     }
 
     /**
@@ -39,6 +43,9 @@ public class InscripcionEnMaterias extends javax.swing.JInternalFrame {
         btnSalir = new javax.swing.JButton();
         jComboMaterias = new javax.swing.JComboBox<>();
         jComboAlumno = new javax.swing.JComboBox<>();
+
+        setClosable(true);
+        setResizable(true);
 
         formMaterias.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         formMaterias.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -125,10 +132,6 @@ public class InscripcionEnMaterias extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboMateriasActionPerformed
-       
-        
-        /*for ( Iterator it = MenuUnef.clientes.values().iterator(); it.hasNext();) {
-combo.addItem( (String) it.next());*/
 
     }//GEN-LAST:event_jComboMateriasActionPerformed
 
@@ -139,10 +142,34 @@ combo.addItem( (String) it.next());*/
 
     private void btnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirActionPerformed
         // TODO add your handling code here:
-        //if(Alumno.materias.containsKey(jComboMaterias.getTex));
+        try{
+            String materiaSeleccionada = jComboMaterias.getSelectedItem().toString();
+            String alumnoSeleccionado =  jComboAlumno.getSelectedItem().toString();
+            int idMateriaSeleccionada = 0;
+            int idAlumnoSeleccionado = 0;
+            for (HashMap.Entry entry : MenuColegio.listaMaterias.entrySet()){
+                System.out.println(entry.getValue());
+                if (entry.getValue().equals(materiaSeleccionada)) {
+                    idMateriaSeleccionada = (int) entry.getKey();
+                    break;
+                }
+            }
+            for (Map.Entry entry : MenuColegio.listaAlumnos.entrySet()) {
+                if(entry.getValue().equals(alumnoSeleccionado)){
+                    idAlumnoSeleccionado = (int) entry.getKey();
+                    break;
+                }
+            }
+            if(Alumno.materias.containsValue(idAlumnoSeleccionado) && Alumno.materias.containsKey(idMateriaSeleccionada)){            
+                JOptionPane.showMessageDialog(this,alumnoSeleccionado+" YA esta inscripto a: "+materiaSeleccionada);
+            }else{
+                Alumno.materias.put(idMateriaSeleccionada, idAlumnoSeleccionado);
+                JOptionPane.showMessageDialog(this, "El alumno "+alumnoSeleccionado+" "+ "se ha inscripto a: "+materiaSeleccionada);
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this, "Acción Inválida");
+        }
     }//GEN-LAST:event_btnInscribirActionPerformed
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInscribir;
