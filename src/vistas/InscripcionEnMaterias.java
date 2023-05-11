@@ -145,11 +145,11 @@ public class InscripcionEnMaterias extends javax.swing.JInternalFrame {
         try{
             String materiaSeleccionada = jComboMaterias.getSelectedItem().toString();
             String alumnoSeleccionado =  jComboAlumno.getSelectedItem().toString();
-            int idMateriaSeleccionada = 0;
+            int idMateriaSeleccionada = 1;
             int idAlumnoSeleccionado = 0;
             for (HashMap.Entry entry : MenuColegio.listaMaterias.entrySet()){
                 System.out.println(entry.getValue());
-                if (entry.getValue().equals(materiaSeleccionada)) {
+                if (entry.getValue().toString().equalsIgnoreCase(materiaSeleccionada)) {
                     idMateriaSeleccionada = (int) entry.getKey();
                     break;
                 }
@@ -160,10 +160,10 @@ public class InscripcionEnMaterias extends javax.swing.JInternalFrame {
                     break;
                 }
             }
-            if(Alumno.materias.containsValue(idAlumnoSeleccionado) && Alumno.materias.containsKey(idMateriaSeleccionada)){            
+            if(Alumno.materias.containsKey(idMateriaSeleccionada)&& {            
                 JOptionPane.showMessageDialog(this,alumnoSeleccionado+" YA esta inscripto a: "+materiaSeleccionada);
             }else{
-                Alumno.materias.put(idMateriaSeleccionada, idAlumnoSeleccionado);
+                Alumno.materias.put(idMateriaSeleccionada, materiaSeleccionada);
                 JOptionPane.showMessageDialog(this, "El alumno "+alumnoSeleccionado+" "+ "se ha inscripto a: "+materiaSeleccionada);
             }
         }catch(Exception ex){

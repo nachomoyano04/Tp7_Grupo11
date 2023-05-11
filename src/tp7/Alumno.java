@@ -7,7 +7,7 @@ public class Alumno {
     private int legajo;
     private String apellido;
     private String nombre;
-    public static HashMap<Integer,Integer> materias = new HashMap();
+    public static HashMap<Integer,String> materias = new HashMap();
 
     public Alumno(int legajo, String apellido, String nombre) {
         this.legajo = legajo;
@@ -41,7 +41,7 @@ public class Alumno {
 
 
     public void agregarMateria(Materia m) {
-        materias.put(m.getIdMateria(), legajo);
+        materias.put(m.getIdMateria(),m.getNombre());
     }
 
     public int cantidadMaterias() {
