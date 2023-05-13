@@ -145,7 +145,7 @@ public class InscripcionEnMaterias extends javax.swing.JInternalFrame {
         try{
             String materiaSeleccionada = jComboMaterias.getSelectedItem().toString();
             String alumnoSeleccionado =  jComboAlumno.getSelectedItem().toString();
-            int idMateriaSeleccionada = 1;
+            int idMateriaSeleccionada = 0;
             int idAlumnoSeleccionado = 0;
             for (HashMap.Entry entry : MenuColegio.listaMaterias.entrySet()){
                 System.out.println(entry.getValue());
@@ -160,7 +160,7 @@ public class InscripcionEnMaterias extends javax.swing.JInternalFrame {
                     break;
                 }
             }
-            if(Alumno.materias.containsKey(idMateriaSeleccionada)&& {            
+            if(Alumno.materias.containsKey(idAlumnoSeleccionado) && Alumno.materias.get(idAlumnoSeleccionado).contains(materiaSeleccionada)) {            
                 JOptionPane.showMessageDialog(this,alumnoSeleccionado+" YA esta inscripto a: "+materiaSeleccionada);
             }else{
                 Alumno.materias.put(idMateriaSeleccionada, materiaSeleccionada);
