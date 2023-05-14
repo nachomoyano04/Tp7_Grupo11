@@ -4,13 +4,9 @@
  */
 package vistas;
 
-import java.awt.Color;
-import java.awt.Menu;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import tp7.Alumno;
 import tp7.Materia;
