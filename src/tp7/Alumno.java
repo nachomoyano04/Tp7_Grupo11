@@ -1,18 +1,20 @@
 package tp7;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Alumno {
 
     private int legajo;
     private String apellido;
     private String nombre;
-    public static HashMap<Integer,String> materias = new HashMap();
-
+    public static HashMap<Integer, HashSet<String>> inscripciones;
+    
     public Alumno(int legajo, String apellido, String nombre) {
         this.legajo = legajo;
         this.apellido = apellido;
-        this.nombre = nombre;
+        this.nombre = nombre; 
+        inscripciones = new HashMap();
     }
 
     public int getLegajo() {
@@ -39,15 +41,20 @@ public class Alumno {
         this.nombre = nombre;
     }
 
-
+ 
     public void agregarMateria(Materia m) {
-        materias.put(m.getIdMateria(),m.getNombre());
+        int idMateria = m.getIdMateria();
+
+        HashSet<String> materiasInscritas = inscripciones.getOrDefault(idMateria, new HashSet<>());
+        materiasInscritas.add(m.getNombre());
+
+        inscripciones.put(idMateria, materiasInscritas);
     }
 
     public int cantidadMaterias() {
         //devuelve cant de mateia a las que está inscripto
         int cant=0;
-        for (HashMap.Entry cantidad: materias.entrySet()) {
+        for (HashMap.Entry cantidad: inscripciones.entrySet()) {
             cant++;
         }
         return cant;
