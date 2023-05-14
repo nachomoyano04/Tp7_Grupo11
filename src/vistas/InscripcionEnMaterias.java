@@ -4,9 +4,12 @@
  */
 package vistas;
 
+import java.awt.Color;
+import java.awt.Menu;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import tp7.Alumno;
 import tp7.Materia;
@@ -139,36 +142,33 @@ public class InscripcionEnMaterias extends javax.swing.JInternalFrame {
 
     private void btnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirActionPerformed
         // TODO add your handling code here:
-        try {
+         try{
             String materiaSeleccionada = jComboMaterias.getSelectedItem().toString();
-            String alumnoSeleccionado = jComboAlumno.getSelectedItem().toString();
-
+            String alumnoSeleccionado =  jComboAlumno.getSelectedItem().toString();
             int idMateriaSeleccionada = 0;
             int idAlumnoSeleccionado = 0;
-            for (Map.Entry<Integer, Materia> entry : MenuColegio.listaMaterias.entrySet()) {
-                System.out.println(entry.getValue());
-                if (entry.getValue().getNombre().equals(materiaSeleccionada)) {
-                    idMateriaSeleccionada = entry.getKey();
+            for (HashMap.Entry entry : MenuColegio.listaMaterias.entrySet()){
+                if (entry.getValue().toString().equalsIgnoreCase(materiaSeleccionada)) {
+                    idMateriaSeleccionada = (int) entry.getKey();
                     break;
                 }
             }
-            for (Map.Entry<Integer, Alumno> entry : MenuColegio.listaAlumnos.entrySet()) {
-                if (entry.getValue().getNombre().equals(alumnoSeleccionado)) {
-                    idAlumnoSeleccionado = entry.getKey();
+            for (Map.Entry entry : MenuColegio.listaAlumnos.entrySet()) {
+                if(entry.getValue().toString().equalsIgnoreCase(alumnoSeleccionado)){
+                    idAlumnoSeleccionado = (int) entry.getKey();
                     break;
                 }
             }
-
-            HashSet<String> alumnosInscritos = Alumno.inscripciones.computeIfAbsent(idMateriaSeleccionada, k -> new HashSet<>());
-            if (alumnosInscritos.contains(alumnoSeleccionado)) {
-                JOptionPane.showMessageDialog(this, alumnoSeleccionado + " YA está inscripto a: " + materiaSeleccionada);
-            } else {
-                alumnosInscritos.add(alumnoSeleccionado);
-                JOptionPane.showMessageDialog(this, "El alumno " + alumnoSeleccionado + " se ha inscripto a: " + materiaSeleccionada);
+            if(MenuColegio.listaAlumnos.get(idAlumnoSeleccionado).inscribirMateria(idMateriaSeleccionada,materiaSeleccionada)){
+                JOptionPane.showMessageDialog(this, "El alumno "+alumnoSeleccionado+" "+ "se ha inscripto a: "+materiaSeleccionada);
+            }else{
+                 JOptionPane.showMessageDialog(this,alumnoSeleccionado+" YA esta inscripto a: "+materiaSeleccionada);                
             }
-        } catch (Exception ex) {
+            
+        }catch(Exception ex){
             JOptionPane.showMessageDialog(this, "Acción Inválida");
         }
+    
     }//GEN-LAST:event_btnInscribirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

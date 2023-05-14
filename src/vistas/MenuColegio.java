@@ -15,6 +15,7 @@ import java.util.HashMap;
 public class MenuColegio extends javax.swing.JFrame {
     public static HashMap<Integer,Materia> listaMaterias = new HashMap(); 
     public static HashMap<Integer,Alumno> listaAlumnos = new HashMap();
+       
 
     /**
      * Creates new form NewJFrame
