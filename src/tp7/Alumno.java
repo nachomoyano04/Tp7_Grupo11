@@ -1,7 +1,6 @@
 package tp7;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class Alumno {
 
